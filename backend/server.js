@@ -5,11 +5,15 @@
 // initialize .env variables
 require("dotenv").config();
 require('./config/db.connection.js')
+
 const usersRouter = require('./routes/users')
 const casesRouter = require('./routes/cases')
 
 const cors = require("cors")
 const morgan = require("morgan")
+
+
+// const favicon = require('serve-favicon')
 
 
 
@@ -29,8 +33,9 @@ const app = express();
 app.use(express.urlencoded({extended:true}))
 app.use(express.json()); // parse json bodies - this will run before our request accesses the people router
 
-app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
-app.use(express.static(path.join(__dirname, 'build')));
+
+// app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
+// app.use(express.static(path.join(__dirname, 'build')));
 
 
 app.use(cors()); // to minimize cors errors, open access to all origins
@@ -50,7 +55,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.use(express.static(path.join(__dirname, 'build')));
+// app.use(express.static(path.join(__dirname, 'build')));
 
 // Put API routes here, before the "catch all" route
 
