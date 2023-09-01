@@ -10,7 +10,7 @@ const {DATABASE_URL} = process.env
 // DATABASE CONNECTION
 ////////////////////////////////
 mongoose.set('strictQuery', true);
-mongoose.connect(DATABASE_URI)
+mongoose.connect(DATABASE_URL)
 
 // Connection Events
 mongoose.connection
