@@ -3,6 +3,8 @@ import { checkToken } from "../../utilities/users-service";
 export default function UserShowPage () {
     async function handleCheckToken() {
         const expDate = await checkToken()
+        console.log(expDate)
+        // incomplete here, just logging out for now
     }
 
     return (

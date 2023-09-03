@@ -9,6 +9,7 @@ module.exports = {
   show,
   update,
   delete: destroy,
+  checkToken
 };
 
 async function create(req, res) {
@@ -69,4 +70,11 @@ function createJWT(user) {
     process.env.SECRET,
     { expiresIn: "2h" }
   )
+}
+
+function checkToken(req, res) {
+
+  console.log("req.user", req.user);
+  res.json(req.exp);
+
 }

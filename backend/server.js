@@ -16,7 +16,6 @@ const morgan = require("morgan")
 // const favicon = require('serve-favicon')
 
 
-
 // pull PORT from .env, give default value of 4000 and establish DB Connection
 const { PORT } = process.env;
 
@@ -32,6 +31,8 @@ const app = express();
 ////////////////////////////////
 app.use(express.urlencoded({extended:true}))
 app.use(express.json()); // parse json bodies - this will run before our request accesses the people router
+
+app.use(require('./config/checkToken'));
 
 
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
