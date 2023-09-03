@@ -1,4 +1,6 @@
 const { User } = require("../models");
+const jwt = require("jsonwebtoken")
+
 // console.log(User);
 
 module.exports = {
@@ -10,12 +12,23 @@ module.exports = {
 };
 
 async function create(req, res) {
-  console.log(req.body)
   try {
-    res.status(201).json(await User.create(req.body));
+    const user = await User.create(req.body);
+    const token = createJWT(user)
+    res.json(token)
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
+}
+
+// HELPER FUNCTIONS 
+function createJWT(user) {
+  return jwt.sign(
+    // data payload
+    { user },
+    process.env.SECRET,
+    { expiresIn: "2h" }
+  )
 }
 
 async function index(req, res) {
