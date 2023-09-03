@@ -23,7 +23,7 @@ const [user, setUser] = useState(getUser())
     
     { user ? 
     <>
-      <NavBar user={user}/>
+      <NavBar user={user} setUser={setUser} />
     <Routes>
       <Route path="/" element={<IndexPage />} /> 
       <Route path="/:userid" element={<UserShowPage />} />   
@@ -34,7 +34,7 @@ const [user, setUser] = useState(getUser())
     </>
       :
 
-      <AuthPage />
+      <AuthPage setUser={setUser} />
 
   }
 
