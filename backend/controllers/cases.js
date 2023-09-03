@@ -10,7 +10,7 @@ module.exports = {
 };
 
 async function create(req, res) {
-  console.log(req.body)
+  // console.log(req.body)
   try {
     res.status(201).json(await Case.create(req.body));
   } catch (error) {

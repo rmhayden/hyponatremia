@@ -1,5 +1,6 @@
 const { User } = require("../models");
 const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
 
 // console.log(User);
 
@@ -9,7 +10,8 @@ module.exports = {
   show,
   update,
   delete: destroy,
-  checkToken
+  checkToken,
+  login
 };
 
 async function create(req, res) {
@@ -62,6 +64,31 @@ async function destroy(req, res) {
   }
 }
 
+function checkToken(req, res) {
+
+  // console.log("req.user", req.user);
+  res.json(req.exp);
+
+}
+
+async function login(req, res) {
+  try {
+    const user = await User.findOne({email: req.body.email});
+    if (!user) {
+      throw new Error();
+    }
+    const match = await bcrypt.compare(req.body.password, user.password);
+    console.log("match", match)
+    if (!match) {
+      throw new Error();
+    }
+    const token = createJWT(user);
+    res.json(token);
+  } catch (err) {
+    res.status(400).json('Bad Credentials');
+  }
+}
+
 // HELPER FUNCTIONS 
 function createJWT(user) {
   return jwt.sign(
@@ -70,12 +97,4 @@ function createJWT(user) {
     process.env.SECRET,
     { expiresIn: "2h" }
   )
-}
-
-
-function checkToken(req, res) {
-
-  console.log("req.user", req.user);
-  res.json(req.exp);
-
 }

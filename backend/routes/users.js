@@ -17,13 +17,21 @@ const ensureLoggedIn = require('../config/ensureLoggedIn')
 router.get('/', usersCtrl.index)
 
 ///////////////////////////////
-// SHOW - DETAIL - GET
+// LOGIN
 ////////////////////////////////
+router.post('/login', usersCtrl.login);
 
 
+///////////////////////////////
+// CHECK TOKEN
+////////////////////////////////
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
 // later, we will add ensureLoggedIn protection to other routes, both in users and cases
 
+
+///////////////////////////////
+// SHOW - DETAIL - GET
+////////////////////////////////
 
 router.get('/:id', usersCtrl.show)
 
