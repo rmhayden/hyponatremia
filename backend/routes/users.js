@@ -7,6 +7,7 @@
 const express = require('express')
 const router = express.Router()
 const usersCtrl = require("../controllers/users")
+const ensureLoggedIn = require('../config/ensureLoggedIn')
 
 ///////////////////////////////
 // ROUTES
@@ -20,7 +21,8 @@ router.get('/', usersCtrl.index)
 ////////////////////////////////
 
 
-router.get('/check-token', usersCtrl.checkToken);
+router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
+// later, we will add ensureLoggedIn protection to other routes, both in users and cases
 
 
 router.get('/:id', usersCtrl.show)
