@@ -3,6 +3,7 @@ import './App.css';
 import { useState } from 'react'
 
 import { Routes, Route } from 'react-router-dom'
+import { getUser } from '../utilities/users-service';
 
 
 
@@ -15,14 +16,14 @@ import UserShowPage from '../pages/UserShowPage/UserShowPage';
 
 export default function App() {
 
-const [user, setUser] = useState(null)
+const [user, setUser] = useState(getUser())
 
   return (
     <main className="App">
     
     { user ? 
     <>
-      <NavBar />
+      <NavBar user={user}/>
     <Routes>
       <Route path="/" element={<IndexPage />} /> 
       <Route path="/:userid" element={<UserShowPage />} />   
