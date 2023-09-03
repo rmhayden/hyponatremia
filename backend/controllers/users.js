@@ -21,16 +21,6 @@ async function create(req, res) {
   }
 }
 
-// HELPER FUNCTIONS 
-function createJWT(user) {
-  return jwt.sign(
-    // data payload
-    { user },
-    process.env.SECRET,
-    { expiresIn: "2h" }
-  )
-}
-
 async function index(req, res) {
   try {
     res.status(200).json(await User.find());
@@ -69,4 +59,14 @@ async function destroy(req, res) {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
+}
+
+// HELPER FUNCTIONS 
+function createJWT(user) {
+  return jwt.sign(
+    // data payload
+    { user },
+    process.env.SECRET,
+    { expiresIn: "2h" }
+  )
 }
