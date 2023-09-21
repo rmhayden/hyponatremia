@@ -18,10 +18,6 @@ const userSchema = new mongoose.Schema({
       minLength: 3,
       required: true
     },
-    cases: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Case"
-    }]
 }, {
     timestamps: true,
     toJSON: {

@@ -13,7 +13,7 @@ export default function NavBar ({ user, setUser }) {
         <nav>
             <Link to="/">Home</Link>
             <Link to="/:userid">Profile</Link>
-            <span>Welcome, {user.name}</span>
+            {/* <span>Welcome, {user.name}</span> */}
             <Link to="" onClick={handleLogOut}>Log Out</Link>
 
         </nav>

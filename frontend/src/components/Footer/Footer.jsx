@@ -1,4 +1,3 @@
-import { FaMailBulk } from "react-icons/fa"
 import "./Footer.css"
 
 

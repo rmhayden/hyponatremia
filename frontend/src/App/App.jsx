@@ -3,7 +3,7 @@ import './App.css';
 import { useState } from 'react'
 
 import { getUser } from '../utilities/users-service';
-import Main from '../components/Main';
+import Main from '../components/Main/Main';
 import Footer from '../components/Footer/Footer';
 import NavBar from "../components/NavBar/NavBar"
 
