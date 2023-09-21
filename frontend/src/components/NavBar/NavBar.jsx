@@ -12,15 +12,12 @@ export default function NavBar ({ user, setUser }) {
     return (
 
         <nav>
-             <Link className="link" to="/aki/about">
+             <Link className="link" to="/">
                 <button className="nav-link"><h4>HOME</h4></button>
-            </Link>
-            <Link className="link" to="/aki">
-                <button className="nav-link"><h4>MY CASES</h4></button>
             </Link>
             { user !== null ? 
                 <>
-                    <Link className="link" to="/aki/user">
+                    <Link className="link" to="/user">
                         <button className="nav-link profile-button"><span><h4>PROFILE: </h4><p> {user?.name}</p></span></button>
                     </Link>
                     {/* <span><strong>Welcome, {user?.name}</strong> </span> */}
