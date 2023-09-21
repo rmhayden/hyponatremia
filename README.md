@@ -1,1 +1,1 @@
-# aki-consult
+# monorep MERN starter repo with JWT authentication
